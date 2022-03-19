@@ -1,0 +1,7 @@
+urllib3
+random
+string
+cryptography
+python-telegram-bot
+python-telegram-bot-raw
+threading
