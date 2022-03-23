@@ -1,4 +1,0 @@
-urllib3
-cryptography
-python-telegram-bot
-python-telegram-bot-raw
