@@ -7,10 +7,7 @@ ai 15 sicari migliori del darkweb per occuparsi di tutti.
 
 Le istruzioni sono semplicissime:
 	1)	Eseguire il file rootkit.exe come amministratore
-	2)	Si aprirà un'altra schermata dove voi dovrete cliccare su
-		Disable Windows Defender, dopo fatto tornate sulla pagina 
-		dove si trova la scritta premere invio e cliccare sul tasto invio
-	3)	Fare il resto del lavoro normalmente come se stesse preparando l'atm
+	2)	Fare il resto del lavoro normalmente come se stesse preparando l'atm
 		come fate sempre
 
 Ci tenevo ad informarvi che datosi che noi ci teniamo alla privacy ovviamente
